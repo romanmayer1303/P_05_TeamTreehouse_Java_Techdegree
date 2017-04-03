@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" th:href="@{/app.css}" />
+
+	<title>Countries of Scandinavia</title>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1><a th:href="@{/}">Countries of Scandinavia</a></h1>
+
+		</div>
+	</header>
+	<div class="container">
+		<h3>Sort by:</h3>
+		<h4><a th:href="@{/countries/sortByNames}">Names</a></h4>
+		<h4><a th:href="@{/countries/sortByPopulation}">Population</a></h4>
+		<div th:each="country: ${countries}" class="country">
+			<a th:href="@{'country/'+${country.name}}">
+				<img th:src="@{'/flags/' + ${country.name} + '.svg'}" th:alt="'Flag of ' + ${country.name}"/>
+				<h4 th:text="${country.name}">name</h4>
+			</a>
+		</div>
+	</div>
+</body>
+</html>
